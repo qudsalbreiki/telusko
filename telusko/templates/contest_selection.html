@@ -1,0 +1,82 @@
+{% extends "ocpc/base.html" %}
+{% load i18n %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% block head %}
+{{ wizard.form.media }}
+<head>
+    <meta charset="UTF-8" />
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="{% static 'styles/mainStyle.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/LandingPageStyle.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+{% endblock %}
+
+{% block content %}
+{{ wizard.form.media }}
+<body>
+    <div class="container">
+        <div class="Header">
+            <img src="{% static 'images/OCPC.png' %}" alt="OCPC_logo" class="headerimg1">
+            <span>Oman Collegiate Programming Contest</span>
+            <img src="{% static 'images/OCD.png' %}" alt="OCD_logo" class="headerImg2">
+        </div>
+        <hr />
+        <br /><br />
+        <div>
+            <p class="subtitle" style="margin-bottom: 20px;">Choose the <span style="color: #C83762;"> contests </span> you are registering in:</p>
+            <br />
+            <form method="post" >
+                {% csrf_token %}
+                <div class="container_box">
+                    {% for contest in contests %}
+                        <div>
+                            <label class="checkbox-container">
+                                <input type="radio" name="contest" value="{{ contest.id }}" id="checkbox{{ forloop.counter }}" data-color="{{ contest.color }}">
+                                <span class="checkmark" id="checkbox{{ forloop.counter }}" data-color="{{ contest.color }}">
+                                    <!-- color edit it later below-->
+                                    <p style="font-weight: 800; font-size: 24px;">{{ contest.name.split('-')[0] }}-<span style="color:black;">{{ contest.name.split('-')[1] }}</span></p>
+                                    <p>{{ contest.description }}</p>
+                                </span>
+                            </label>
+                        </div>
+                    {% endfor %}
+                </div>
+                <button type="submit">Next</button>
+            </form>
+        </div>
+        <br />
+        <hr />
+        <br />
+        <div class="footer">
+            <span>Strategic partner</span>
+            <img src="{% static 'images/CodeAcademyLogo.png' %}" alt="CodeAcademy_Logo">
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block extra_js %}   
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const radioButtons = document.querySelectorAll('input[type="radio"][name="contest"]');
+            radioButtons.forEach(radio => {
+                radio.addEventListener('change', (event) => {
+                    radioButtons.forEach(rb => {
+                        const checkmark = rb.nextElementSibling;
+                        if (rb.checked) {
+                            checkmark.style.borderColor = rb.getAttribute('data-color');
+                        } else {
+                            checkmark.style.borderColor = 'rgb(217, 217, 217)';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+    {% endblock %}
+</body>
+</html>

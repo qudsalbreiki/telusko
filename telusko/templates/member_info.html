@@ -1,0 +1,94 @@
+{% extends "wizard_form.html" %}
+{% block content %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Member {{ member_number }} Information</title>
+    <link rel="stylesheet" href="{% static 'styles/mainStyle.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="Header">
+            <img src="{% static 'images/OCPC.png' %}" alt="OCPC_logo" class="headerimg1">
+            <span>Oman Collegiate Programming Contest</span>
+            <img src="{% static 'images/OCD.png' %}" alt="OCD_logo" class="headerImg2">
+        </div>
+        <hr />
+        <br /><br />
+        <div>
+            <p class="subtitle"><span style="color:#C83762;"> Member {{ member_number }} </span> Information</p>
+            <br /><br />
+            <form method="post">
+                {% csrf_token %}
+                {{ wizard.management_form }}
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Full Name</span>
+                        {{ wizard.form.full_name }}
+                    </div>
+                    
+                    <div class="input-box">
+                        <span class="details">Family Name</span>
+                        {{ wizard.form.family_name }}
+                    </div>
+                      
+                    <div class="input-box">
+                        <span class="details">Birth date</span>
+                        {{ wizard.form.birth_date }}
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Gender</span>
+                        {{ wizard.form.gender }}
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Major/Specialization</span>
+                        {{ wizard.form.specialization }}
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Official communication email</span>
+                        {{ wizard.form.email }}
+                    </div>
+                                        
+                    <div class="input-box">
+                        <span class="details">T-shirt size</span>
+                        {{ wizard.form.tshirt_size }}
+                    </div>
+                </div>
+                <br />
+                <div>
+                    {% if wizard.steps.prev %}
+                    <a href="{% url 'member_info' member_number=member_number|add:-1 %}">
+                        <button type="button">Previous</button>
+                    </a>
+                    {% endif %}
+                    {% if wizard.steps.next %}
+                    <a href="{% url 'member_info' member_number=member_number|add:1 %}">
+                        <button type="button">Next</button>
+                    </a>
+                    {% else %}
+                    <a href="{% url 'document_upload' %}">
+                        <button type="button">Next</button>
+                    </a>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+        <br />
+        <hr />
+        <br />
+        <div class="footer">
+            <span>Strategic partner</span>
+            <img src="{% static 'images/CodeAcademyLogo.png' %}" alt="CodeAcademy_Logo">
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

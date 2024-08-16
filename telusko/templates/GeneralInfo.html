@@ -1,0 +1,112 @@
+{% extends "wizard_form.html" %}
+{% load widget_tweaks %}
+{% load i18n %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>General Information</title>
+    <link rel="stylesheet" href="{% static 'styles/mainStyle.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        .container {
+            text-align: justify;
+            line-height: 1.5;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <div class="Header">
+            <img src="{% static 'images/OCPC.png' %}" alt="OCPC_logo" class="headerimg1">
+            <span>Oman Collegiate Programming Contest</span>
+            <img src="{% static 'images/OCD.png' %}" alt="OCD_logo" class="headerImg2">
+        </div>
+        <hr />
+        <br />
+        <br />
+        <div>
+            <p>
+                <span class="title">What is this registration form for?</span><br />
+                This form is meant for the team's coaches who want to participate in The 10th Oman Collegiate Programming Contest (OCPC2023)
+                and The 11th Gulf Programming Contest (GPC2023). Both events will be held in Muscat during the period 28/Oct - 4/Nov/2023. 
+                Omani teams can opt to participate in one or both contests; GCC teams can only register in GPC2023. The accepted teams in any
+                of the contests will be notified by 17/Oct/2023.
+            </p>
+            <br />
+            <p>
+                <span class="title">General Instructions:</span><br />
+                <ol style="list-style-position: outside; margin-left: 15px;" type="1">
+                    <li>Make all needed documents ready before start filling the form.</li>
+                    <li>This form should be filled by one person from the team; preferably the team's coach only.</li>
+                    <li>Fill the names, DoB and all other information as they appear in the official documents.
+                        If you have more than one team, you need to fill separate form for each team and repeat the details of the coach (in 
+                        case a coach is having multiple teams) within each form.</li>
+                    <li>Filling the pre-registration form is not a guarantee for the acceptance. All accepted teams will be notified by email
+                        after auditing the documents.</li>
+                    <li>IMPORTANT NOTICE 1: for GCC teams, if any of your team-members require visa to enter Oman then we encourage you to apply
+                        ahead by enough time to the concerned authorities (e.g. Oman embassy at your residence country); We will not be able to
+                        provide any support on this matter due the workload on the organization team.</li>
+                    <li>IMPORTANT NOTICE 2: for team from outside Oman/GCC countries, if any of your teams-members require VISA assistant to enter
+                        Oman then the team's registration must be confirmed before 10/Oct/2023; and must notify us by email before the specified date.
+                        Visa processing fees might be applied, and the visa-issuing is not guaranteed.</li>
+                </ol>
+            </p>
+            <br />
+            <p>
+                <span class="title"> Deadlines and Notifications:</span><br />
+                1. The deadline to pre-register in GPC2024/OCPC2024 using this form is 20/Oct/2023.<br />
+                2. The acceptance notification will be sent by email on 12/Oct/2023.<br />            
+            </p>    
+            <br />
+            <p>
+                <span class="title">Age Exemption Procedure</span><br />
+                If any of your team contestants is not satisfying the participation age restriction, then please
+                send a request for exemption to the organization team via this email: events@codeacademy.om. The
+                request will be judged by the GPC/OCPC steering committee and you will be notified about the outcomes.
+                Please do not register the team/member until you got notified.
+            </p>
+            <br />
+            <p>
+                <span class="title">Registration Fee Payment:</span><br />
+                To make it easy for the teams, the registration fees can be paid at the site during the first day of 
+                the event. The payment can be paid cash only, and an official receipt will be provided if needed.
+            </p>    
+            <br />
+            <p>
+                <span class="title">Documents <span style="font-size: 13px;">(Get them ready-scanned before start filling the form)</span>:</span><br />                
+                1. Coach's ID + photo <br />
+                2. Coach's employment card (or coach-ship authorization letter from the institute) <br />
+                3. First contestant's id + enrolment letter + photo <br />
+                4. Second contestant's id + enrolment letter + photo <br />
+                5. Third contestant's id + enrolment letter + photo <br />
+            </p>    
+            <br />
+            <p>
+                <span class="title">Inquiries:</span><br />
+                For more information and inquiries please send us an email via events@codeacademy.om. Or you can call the team on 00968 97451040. 
+                Also you can visit https://bit.ly/3r1hYVL for more information about the contests and how to prepare for them.
+            </p>
+            <br />
+        </div>
+        <br />
+        <hr />
+        <br />
+        <div>
+            <form method="post">
+                {% csrf_token %}
+                {{ wizard.management_form }}
+                {{ wizard.form.general_info }}
+                <button name="wizard_goto_step" type="submit">Next</button>
+            </form>
+        </div>
+        <div class="footer">
+            <span>Strategic partner</span>
+            <img src="{% static 'images/CodeAcademyLogo.png' %}" alt="CodeAcademy_Logo">
+        </div>
+    </div>
+  </body>
+</html>
+{% endblock %}

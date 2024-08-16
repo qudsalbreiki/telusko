@@ -1,0 +1,69 @@
+{% extends "wizard_form.html" %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Documents</title>
+    <link rel="stylesheet" href="{% static 'styles/mainStyle.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/uploadStyle.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
+</head>
+
+<body>
+    <div class="container">
+        <div class="Header">
+            <img src="{% static 'images/OCPC.png' %}" alt="OCPC_logo" class="headerimg1">
+            <span>Oman Collegiate Programming Contest</span>
+            <img src="{% static 'images/OCD.png' %}" alt="OCD_logo" class="headerImg2">
+        </div>
+        <hr /><br /><br />
+        <div>
+            <p class="subtitle">Upload the needed <span style="color: #F64B7D;">documents</span>:</p><br /><br />
+            <div class="file-upload-container">
+                <!-- Display uploaded file name -->
+                <div id="fileDisplay" class="file-display">No file chosen</div>
+                
+                <!-- Form for file upload -->
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ wizard.management_form }}
+                    <div class="file-upload-wrapper">
+                        <input type="file" id="fileUpload" name="file" accept=".pdf,.doc,.docx" />
+                        <span class="upload-icon"><img src="{% static 'images/file.png' %}" alt="upload logo"></span> 
+                    </div>
+                    {{ wizard.form.file }}
+                    <button type="submit">Upload</button>
+                </form>
+            </div>
+            <br /><br />
+            <p style="float: left; text-align: justify;">Please upload one file containing all the required documents (Coach ID, university ID, and citizen/resident 
+                ID for each member in the team).</p>
+            <br /><br /><br />                     
+        </div>
+        <br /><hr /><br />
+        <div>
+            <form method="post">
+                {% csrf_token %}
+                {{ wizard.management_form }}
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div class="footer">
+            <span>Strategic partner</span>
+            <img src="{% static 'images/CodeAcademyLogo.png' %}" alt="CodeAcademy_Logo">
+        </div>
+
+        <script>
+            document.getElementById('fileUpload').addEventListener('change', function() {
+                var file = this.files[0];
+                var fileName = file ? file.name : 'No file chosen';
+                document.getElementById('fileDisplay').textContent = fileName;
+            });          
+        </script>
+    </div>
+</body>
+</html>
+{% endblock %}

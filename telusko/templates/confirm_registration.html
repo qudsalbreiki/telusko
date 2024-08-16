@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title> Confirm Registration </title>
+    <link rel="stylesheet" href="{% static 'styles/mainStyle.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />    
+
+    <style>
+        .container {
+            text-align: justify;
+        }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+        <div class="Header">
+            <img src="{% static 'images/OCPC.png' %}" alt="OCPC_logo" class="headerimg1">
+            <span>Oman Colligate Programming Contest</span>
+            <img src="{% static 'images/OCD.png' %}" alt="OCD_logo" class="headerImg2">
+        </div>
+        <hr />
+        <br />
+        <br />
+        <div class="message">
+            <p>Your team has been registered successfully!</p>
+            <p style="color: #3C9C9A;">We wish you success and good luck.</p>
+            <p>Thank you.</p>              
+        </div>
+        <br />
+        <br />
+        <hr />
+        <br />
+
+        <div class="footer">
+            <span>Strategic partner</span>
+            <img src="{% static 'images/CodeAcademyLogo.png' %}" alt="CodeAcademy_Logo">
+        </div>
+    </div>
+  </body>

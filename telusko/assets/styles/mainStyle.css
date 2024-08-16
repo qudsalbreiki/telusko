@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url( 'https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  flex-direction: column;
+  /* background-image: url('IMG3.jpg'); */
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+p, ol{ 
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.container{
+  max-width: 750px;
+  width: 100%;
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  line-height: 1.5;
+}
+.container .Header{
+  font-size: 24px;
+  font-weight: 500;
+  text-align: center;
+  position: relative;
+}
+
+.container .title {
+  font-size: 16px;
+  font-weight: 500;
+  font-weight: bold;
+  letter-spacing: 1px;
+  line-height: 2;
+  color: #C83762;
+
+}
+
+form .user-details .input-box{
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
+  display: inline-block;
+}
+
+form .input-box span.details{
+  display: block;
+  font-weight: 500;
+  margin-bottom: 1px;
+  font-size: 13px;
+}
+
+.user-details .input-box input{
+  height: 40px;
+  width: 100%;
+  outline: none;
+  font-size: 13px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #D9D9D9;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+  color: #737373;
+  margin-bottom: 10px;
+}
+
+select {
+  height: 40px;
+  width: 100%;
+  outline: none;
+  font-size: 13px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #D9D9D9;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+  appearance: none; /* Removes default arrow in most browsers */
+  color: #737373;
+}
+	
+.user-details .input-box input:focus,
+.user-details .input-box input:valid{
+  border-color: #C83762;
+}
+
+form .gender-details .gender-title{
+  font-size: 20px;
+  font-weight: 500;
+}
+
+form .selection{
+  display: flex;
+  width: 100%;
+}
+
+form .selection label{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+form .selection label .dot{
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background: #d9d9d9;
+  border: 5px solid transparent;
+  transition: all 0.3s ease;
+}
+
+#dot-1:checked ~ .category label .one,
+#dot-2:checked ~ .category label .two
+{
+  background: #9b59b6;
+  border-color: #d9d9d9;
+}
+
+form input[type="radio"]{
+  display: none;
+}
+
+button{
+  margin: 10px 0;
+  background: #3A225E;
+  width: 25%;
+  height: 35px;
+  border-radius: 4px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  margin-left: 38.5%;
+}
+
+button:hover{
+  /* transform: scale(0.99); */
+  background: #d9d9d9;
+  color:#3A225E ;
+}
+
+/*The phone screen*/
+@media(max-width: 584px){
+ .container{
+    max-width: 100%;
+  }
+  form .user-details .input-box{
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  form .category{
+    width: 100%;
+  }
+  .content form .user-details{
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  .user-details::-webkit-scrollbar{
+    width: 5px;
+  }
+  button { 
+    width: 40%;
+    margin-left: 30%;
+  }
+  .headerimg1 {
+    height: 20px;
+    margin-right: 0;
+  }  
+  .headerImg2 {
+    max-height: 50px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .container .Header{
+    font-size: 18px;
+  }
+  .footer img{
+    height: 20px;
+  }
+}
+
+@media(max-width: 459px){
+  .container .content .category{
+    flex-direction: column;
+  }
+}
+
+.subtitle {
+  float: left;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.subdetails{
+  display: block;
+  width: 100%;
+  padding: 10px;
+}
+
+.container hr { 
+  height: 1.5px; 
+  background-color: #3C9C9A; 
+  border: none;
+}
+
+.Header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 5px;
+}
+
+.headerimg1 {
+  max-height: 30px;
+  margin-right: 5px; 
+}
+
+.headerImg2 {
+  width: 100px;
+  height: 70px;
+  margin-left: 5px;
+  float: right;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 5px;
+}
+
+.footer span{
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.footer img{
+  max-height: 30px;
+  margin-left: 10px;
+}
+
+.message p{
+  margin: 20px;
+  font-size: 20px;
+  line-height: 1.6;
+  text-align: center;
+  font-weight: 500;
+}
